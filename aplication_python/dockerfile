@@ -1,0 +1,11 @@
+#utilizamos la imagen oficial de python
+FROM python:alpine
+#directorio de trabajo
+WORKDIR /app
+#copiamos el script d epython y el fichero de requirements al directorio de trabajo
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY app.py .
+#ejecutamos el script de python
+ENTRYPOINT [ "python" ]
+CMD [ "app.py"]
