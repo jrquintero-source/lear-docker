@@ -1,0 +1,17 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY app.py .
+COPY entrypoint.sh .
+
+# permisos
+RUN chmod +x entrypoint.sh
+
+# variables por defecto
+ENV APP_ENV=qa
+ENV NOMBRE=invitado
+
+# entrypoint + cmd
+ENTRYPOINT ["./entrypoint.sh"]
+CMD ["python", "app.py"]
